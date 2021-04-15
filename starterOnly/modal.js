@@ -20,4 +20,11 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+//RS
+const cross = document.querySelector(".close");
+
+// close modal form
+cross.addEventListener("click", function(){
+  modalbg.style.display = "none";
+})
 
