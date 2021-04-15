@@ -622,9 +622,15 @@ footer {
   }
 }
 
-#firstlabel span, #lastlabel span, #emaillabel span {
+#firstlabel span {
   font-size: .8rem;
   color: red;
+  font-weight: 600;
+}
+
+#firstlabel .correct {
+  font-size: .8rem;
+  color: green;
   font-weight: 600;
 }
 

@@ -56,19 +56,25 @@ form.addEventListener("click", function(event){
 
   reset();
 
-  if (first.value == "" || last.value == "" || email.value == "") {
-
+  if (first.value == "") {
     flspan = firstlabel.appendChild(document.createElement("span"));
-    flspan.innerHTML=" Champ obligatoire !";
-
-    llspan = lastlabel.appendChild(document.createElement("span"));
-    llspan.innerHTML=" Champ obligatoire !";
-
-    elspan = emaillabel.appendChild(document.createElement("span"));
-    elspan.innerHTML=" Champ obligatoire !";
-    
-    event.preventDefault();
+    flspan.innerHTML=" Le champ est obligatoire !";
+  } else if (first.value.length < 2) {
+    flspan = firstlabel.appendChild(document.createElement("span"));
+    flspan.innerHTML=" Le champ est trop court !";
+  } else if (isNaN(first.value) == false) {
+    flspan = firstlabel.appendChild(document.createElement("span"));
+    flspan.innerHTML=" Le champ ne doit contenir aucun chiffre !";
+  } else {
+    flspan = firstlabel.appendChild(document.createElement("span"));
+    flspan.classList.add("correct");
+    flspan.innerHTML=" Le champ est correct !";
   }
+
+  ;
+
+    event.preventDefault();
+
 
   
 });
