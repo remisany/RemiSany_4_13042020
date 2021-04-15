@@ -31,6 +31,11 @@ img {
   padding-right: 1rem;
 }
 
+::placeholder {
+  color: red;
+  font-size: .9rem;
+}
+
 .topnav {
   overflow: hidden;
   /*RS*/
@@ -615,5 +620,11 @@ footer {
   to {
     opacity: 1;
   }
+}
+
+#firstlabel span, #lastlabel span, #emaillabel span {
+  font-size: .8rem;
+  color: red;
+  font-weight: 600;
 }
 
