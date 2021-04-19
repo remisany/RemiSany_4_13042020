@@ -29,6 +29,8 @@ cross.addEventListener("click", function(){
 
 //Form
 const form = document.querySelector(".btn-submit");
+var flag = 0;
+var beforesubmit = 0;
 
 //First name & Last Name
 const regname = /[\\\^\$\*\+\?\.\(\)\|\[\]\{\}\-&~"#'`_@=¨£%µ,;/:§!]/g;
@@ -54,12 +56,18 @@ const birthlabel = document.querySelector("#birthlabel");
 const quantity = document.querySelector("#quantity");
 const quantitylabel = document.querySelector("#quantitylabel");
 
+//Radios
+const radioslabel = document.querySelector("#radioslabel");
+
 //Checkbox 1
 const checkbox1 = document.querySelector("#checkbox1");
 const checkbox1label = document.querySelector("#checkbox1label");
 
 //Reset
 function reset () {
+  flag = 0;
+  beforesubmit = 0;
+
   //Reset First name
   if (document.querySelector("#firstlabel span") != undefined) {
     firstlabel.removeChild(flspan);
@@ -85,20 +93,20 @@ function reset () {
     quantitylabel.removeChild(qlspan);
   }
 
-  
+  //Reset Radios
+  if (document.querySelector("#radioslabel span") != undefined) {
+    radioslabel.removeChild(rlspan);
+  }
+
   //Reset Checkbox 1
   if (document.querySelector("#checkbox1label #clspan") != undefined) {
     checkbox1label.removeChild(clspan);
   }
 
-}
+};
 
 form.addEventListener("click", function(event){
-  event.preventDefault();
-
   reset();
-
-  var flag = 0;
 
   //First name verification
   flspan = firstlabel.appendChild(document.createElement("span"));
@@ -111,13 +119,11 @@ form.addEventListener("click", function(event){
     for (i=0; i<firstlength; i++) {
       if (isNaN(parseInt(firstArray[i])) == false) {
         flspan.innerHTML=" Le champ ne doit contenir aucun chiffre !";
-        event.preventDefault();
         flag = 1;
       }
 
       if (regname.test(firstArray[i])) {
         flspan.innerHTML=" Le champ contient un caractère non accepté !";
-        event.preventDefault();
         flag = 1;
       }
     }
@@ -126,14 +132,13 @@ form.addEventListener("click", function(event){
       flspan.classList.add("correct");
       flspan.innerHTML=" Le champ est correct";
       flag = 0;
+      beforesubmit++;
     }
 
   } else if (firstlength != 0) {
     flspan.innerHTML=" Le champ est trop court !";
-    event.preventDefault();
   } else {
     flspan.innerHTML=" Le champ est obligatoire !";
-    event.preventDefault();
   }
 
   //Last name verification
@@ -147,13 +152,11 @@ form.addEventListener("click", function(event){
     for (i=0; i<lastlength; i++) {
       if (isNaN(parseInt(lastArray[i])) == false) {
         llspan.innerHTML=" Le champ ne doit contenir aucun chiffre !";
-        event.preventDefault();
         flag = 1;
       }
 
       if (regname.test(lastArray[i])) {
         llspan.innerHTML=" Le champ contient un caractère non accepté !";
-        event.preventDefault();
         flag = 1;
       }
     }
@@ -162,14 +165,13 @@ form.addEventListener("click", function(event){
       llspan.classList.add("correct");
       llspan.innerHTML=" Le champ est correct";
       flag = 0;
+      beforesubmit++;
     }
 
   } else if (lastlength != 0) {
     llspan.innerHTML=" Le champ est trop court !";
-    event.preventDefault();
   } else {
     llspan.innerHTML=" Le champ est obligatoire !";
-    event.preventDefault();
   }
 
   //Email verification
@@ -182,13 +184,12 @@ form.addEventListener("click", function(event){
     if (emailvalue.match(regemail)) {
       elspan.classList.add("correct");
       elspan.innerHTML=" Le champ est correct";
+      beforesubmit++;
     } else {
       elspan.innerHTML=" L'adresse mail est invalide !";
-      event.preventDefault();
     }
   } else {
     elspan.innerHTML=" Le champ est obligatoire !";
-    event.preventDefault();
   }
 
   //Birthdate verification
@@ -199,10 +200,10 @@ form.addEventListener("click", function(event){
   
   if (birthlength == 0) {
     blspan.innerHTML=" Le champ est obligatoire !";
-    event.preventDefault();
   } else {
     blspan.classList.add("correct");
     blspan.innerHTML=" Le champ est correct";
+    beforesubmit++;
   }
 
   //Quantity verification
@@ -213,10 +214,33 @@ form.addEventListener("click", function(event){
   
   if (quantitylength == 0) {
     qlspan.innerHTML=" Le champ est obligatoire !";
-    event.preventDefault();
   } else {
     qlspan.classList.add("correct");
     qlspan.innerHTML=" Le champ est correct";
+    beforesubmit++;
+  }
+
+  //Location verification
+  const radios = document.getElementsByName("location");
+  rlspan = radioslabel.appendChild(document.createElement("span"));
+
+  const radioslength = radios.length;
+  var cpt = 0;
+
+  for (i=0; i<radioslength; i++) {
+    if (radios[i].checked == true) {
+      cpt++;
+    }
+  }
+
+  if ((cpt == quantityvalue) && (quantityvalue !== "")) {
+    rlspan.classList.add("correct");
+    rlspan.innerHTML=" Le champ est correct";
+    beforesubmit++;
+  } else if ((quantityvalue == "") && (cpt == 0)){
+    rlspan.innerHTML="";
+  } else {
+    rlspan.innerHTML=" Le nombre de ville selectionné est incorrect !";
   }
 
   //Checkbox 1 verification
@@ -226,10 +250,20 @@ form.addEventListener("click", function(event){
 
   if (checkbox1.checked == false) {
     clspan.innerHTML=" L'acceptation est obligatoire !";
-    event.preventDefault();
   } else {
     clspan.classList.add("correct");
     clspan.innerHTML=" Le champ est correct";
+    beforesubmit++;
+  }
+
+  //Submit
+  if (beforesubmit != 7) {
+    event.preventDefault();
+    console.log(beforesubmit);
   }
 
 });
+
+function validate() {
+  alert("Votre participation a bien été envoyé");
+};
