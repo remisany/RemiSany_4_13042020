@@ -31,7 +31,7 @@ cross.addEventListener("click", function(){
 const form = document.querySelector(".btn-submit");
 
 // First name & Last Name
-const reg = /[~`!#$%\^&*+=\-\[\]\';,/{}|\":<>\?]/g;
+const regname = /[\\\^\$\*\+\?\.\(\)\|\[\]\{\}\-&~"#'`_@=¨£%µ,;/:§!]/g;
 
 // First Name
 const first = document.querySelector("#first");
@@ -40,6 +40,11 @@ const firstlabel = document.querySelector("#firstlabel");
 // Last name
 const last = document.querySelector("#last");
 const lastlabel = document.querySelector("#lastlabel");
+
+// Email
+const email = document.querySelector("#email");
+const emaillabel = document.querySelector("#emaillabel");
+const regemail = /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/g;
 
 // Birthdate
 const birth = document.querySelector("#birthdate");
@@ -61,7 +66,12 @@ function reset () {
     lastlabel.removeChild(llspan);
   }
 
-  // Reset Last name
+  // Reset Birthdate
+  if (document.querySelector("#emaillabel span") != undefined) {
+    emaillabel.removeChild(elspan);
+  }
+
+  // Reset Birthdate
   if (document.querySelector("#birthlabel span") != undefined) {
     birthlabel.removeChild(blspan);
   }
@@ -96,7 +106,7 @@ form.addEventListener("click", function(event){
         flag = 1;
       }
 
-      if (reg.test(firstArray[i])) {
+      if (regname.test(firstArray[i])) {
         flspan.innerHTML=" Le champ contient un caractère non accepté !";
         event.preventDefault();
         flag = 1;
@@ -132,7 +142,7 @@ form.addEventListener("click", function(event){
         flag = 1;
       }
 
-      if (reg.test(lastArray[i])) {
+      if (regname.test(lastArray[i])) {
         llspan.innerHTML=" Le champ contient un caractère non accepté !";
         event.preventDefault();
         flag = 1;
@@ -150,6 +160,25 @@ form.addEventListener("click", function(event){
     event.preventDefault();
   } else {
     llspan.innerHTML=" Le champ est obligatoire !";
+    event.preventDefault();
+  }
+
+  //Email verification
+  elspan = emaillabel.appendChild(document.createElement("span"));
+
+  const emailvalue = email.value;
+  const emaillength = emailvalue.length;
+
+  if (emaillength != 0) {
+    if (emailvalue.match(regemail)) {
+      elspan.classList.add("correct");
+      elspan.innerHTML=" Le champ est correct !";
+    } else {
+      elspan.innerHTML=" L'adresse mail est invalide !";
+      event.preventDefault();
+    }
+  } else {
+    elspan.innerHTML=" Le champ est obligatoire !";
     event.preventDefault();
   }
 
