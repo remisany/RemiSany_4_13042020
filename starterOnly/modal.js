@@ -20,69 +20,78 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// Close modal form
+//Close modal form
 const cross = document.querySelector(".close");
 
 cross.addEventListener("click", function(){
   modalbg.style.display = "none";
 });
 
-// Form
+//Form
 const form = document.querySelector(".btn-submit");
 
-// First name & Last Name
+//First name & Last Name
 const regname = /[\\\^\$\*\+\?\.\(\)\|\[\]\{\}\-&~"#'`_@=¨£%µ,;/:§!]/g;
 
-// First Name
+//First Name
 const first = document.querySelector("#first");
 const firstlabel = document.querySelector("#firstlabel");
 
-// Last name
+//Last name
 const last = document.querySelector("#last");
 const lastlabel = document.querySelector("#lastlabel");
 
-// Email
+//Email
 const email = document.querySelector("#email");
 const emaillabel = document.querySelector("#emaillabel");
 const regemail = /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/g;
 
-// Birthdate
+//Birthdate
 const birth = document.querySelector("#birthdate");
 const birthlabel = document.querySelector("#birthlabel");
 
-// Quantity
+//Quantity
 const quantity = document.querySelector("#quantity");
 const quantitylabel = document.querySelector("#quantitylabel");
 
-// Reset
+//Checkbox 1
+const checkbox1 = document.querySelector("#checkbox1");
+const checkbox1label = document.querySelector("#checkbox1label");
+
+//Reset
 function reset () {
-  // Reset First name
+  //Reset First name
   if (document.querySelector("#firstlabel span") != undefined) {
     firstlabel.removeChild(flspan);
   }
 
-  // Reset Last name
+  //Reset Last name
   if (document.querySelector("#lastlabel span") != undefined) {
     lastlabel.removeChild(llspan);
   }
 
-  // Reset Birthdate
+  //Reset Birthdate
   if (document.querySelector("#emaillabel span") != undefined) {
     emaillabel.removeChild(elspan);
   }
 
-  // Reset Birthdate
+  //Reset Birthdate
   if (document.querySelector("#birthlabel span") != undefined) {
     birthlabel.removeChild(blspan);
   }
 
-  // Reset Quantity
+  //Reset Quantity
   if (document.querySelector("#quantitylabel span") != undefined) {
     quantitylabel.removeChild(qlspan);
   }
 
-}
+  
+  //Reset Checkbox 1
+  if (document.querySelector("#checkbox1label #clspan") != undefined) {
+    checkbox1label.removeChild(clspan);
+  }
 
+}
 
 form.addEventListener("click", function(event){
   event.preventDefault();
@@ -91,7 +100,7 @@ form.addEventListener("click", function(event){
 
   var flag = 0;
 
-  // First name verification
+  //First name verification
   flspan = firstlabel.appendChild(document.createElement("span"));
 
   const firstvalue = first.value;
@@ -115,7 +124,7 @@ form.addEventListener("click", function(event){
 
     if (flag == 0) {
       flspan.classList.add("correct");
-      flspan.innerHTML=" Le champ est correct !";
+      flspan.innerHTML=" Le champ est correct";
       flag = 0;
     }
 
@@ -151,7 +160,7 @@ form.addEventListener("click", function(event){
 
     if (flag == 0) {
       llspan.classList.add("correct");
-      llspan.innerHTML=" Le champ est correct !";
+      llspan.innerHTML=" Le champ est correct";
       flag = 0;
     }
 
@@ -172,7 +181,7 @@ form.addEventListener("click", function(event){
   if (emaillength != 0) {
     if (emailvalue.match(regemail)) {
       elspan.classList.add("correct");
-      elspan.innerHTML=" Le champ est correct !";
+      elspan.innerHTML=" Le champ est correct";
     } else {
       elspan.innerHTML=" L'adresse mail est invalide !";
       event.preventDefault();
@@ -193,7 +202,7 @@ form.addEventListener("click", function(event){
     event.preventDefault();
   } else {
     blspan.classList.add("correct");
-    blspan.innerHTML=" Le champ est correct !";
+    blspan.innerHTML=" Le champ est correct";
   }
 
   //Quantity verification
@@ -207,7 +216,20 @@ form.addEventListener("click", function(event){
     event.preventDefault();
   } else {
     qlspan.classList.add("correct");
-    qlspan.innerHTML=" Le champ est correct !";
+    qlspan.innerHTML=" Le champ est correct";
+  }
+
+  //Checkbox 1 verification
+  clspan = document.createElement("span");
+  clspan.setAttribute("id", "clspan");
+  clspan = checkbox1label.appendChild(clspan);
+
+  if (checkbox1.checked == false) {
+    clspan.innerHTML=" L'acceptation est obligatoire !";
+    event.preventDefault();
+  } else {
+    clspan.classList.add("correct");
+    clspan.innerHTML=" Le champ est correct";
   }
 
 });
