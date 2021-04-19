@@ -20,10 +20,9 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// RS
+// Close modal form
 const cross = document.querySelector(".close");
 
-// close modal form
 cross.addEventListener("click", function(){
   modalbg.style.display = "none";
 });
@@ -31,24 +30,24 @@ cross.addEventListener("click", function(){
 // Form
 const form = document.querySelector(".btn-submit");
 
-// Prénom & Nom
+// First name & Last Name
 const reg = /[~`!#$%\^&*+=\-\[\]\';,/{}|\":<>\?]/g;
 
-// Prénom
+// First Name
 const first = document.querySelector("#first");
 const firstlabel = document.querySelector("#firstlabel");
 
-// Nom
+// Last name
 const last = document.querySelector("#last");
 const lastlabel = document.querySelector("#lastlabel");
 
 function reset () {
-  //Reset prénom
+  // Reset First name
   if (document.querySelector("#firstlabel span") != undefined) {
     firstlabel.removeChild(flspan);
   }
 
-  //Reset Nom
+  // Reset Last name
   if (document.querySelector("#lastlabel span") != undefined) {
     lastlabel.removeChild(llspan);
   }
@@ -59,10 +58,10 @@ form.addEventListener("click", function(event){
   event.preventDefault();
 
   reset();
-  
+
   var flag = 0;
 
-  //Vérifcation prénom
+  // First name verification
   flspan = firstlabel.appendChild(document.createElement("span"));
 
   const firstvalue = first.value;
@@ -98,7 +97,7 @@ form.addEventListener("click", function(event){
     event.preventDefault();
   }
 
-  //Vérification nom
+  //Last name verification
   llspan = lastlabel.appendChild(document.createElement("span"));
 
   const lastvalue = last.value;
