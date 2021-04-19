@@ -622,13 +622,13 @@ footer {
   }
 }
 
-#firstlabel span, #lastlabel span {
+#firstlabel span, #lastlabel span, #birthlabel span, #quantitylabel span {
   font-size: .8rem;
   color: red;
   font-weight: 600;
 }
 
-#firstlabel .correct, #lastlabel .correct {
+#firstlabel .correct, #lastlabel .correct, #birthlabel .correct, #quantitylabel .correct {
   font-size: .8rem;
   color: green;
   font-weight: 600;

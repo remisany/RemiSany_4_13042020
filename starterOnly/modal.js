@@ -41,6 +41,15 @@ const firstlabel = document.querySelector("#firstlabel");
 const last = document.querySelector("#last");
 const lastlabel = document.querySelector("#lastlabel");
 
+// Birthdate
+const birth = document.querySelector("#birthdate");
+const birthlabel = document.querySelector("#birthlabel");
+
+// Quantity
+const quantity = document.querySelector("#quantity");
+const quantitylabel = document.querySelector("#quantitylabel");
+
+// Reset
 function reset () {
   // Reset First name
   if (document.querySelector("#firstlabel span") != undefined) {
@@ -51,6 +60,17 @@ function reset () {
   if (document.querySelector("#lastlabel span") != undefined) {
     lastlabel.removeChild(llspan);
   }
+
+  // Reset Last name
+  if (document.querySelector("#birthlabel span") != undefined) {
+    birthlabel.removeChild(blspan);
+  }
+
+  // Reset Quantity
+  if (document.querySelector("#quantitylabel span") != undefined) {
+    quantitylabel.removeChild(qlspan);
+  }
+
 }
 
 
@@ -131,6 +151,34 @@ form.addEventListener("click", function(event){
   } else {
     llspan.innerHTML=" Le champ est obligatoire !";
     event.preventDefault();
+  }
+
+  //Birthdate verification
+  blspan = birthlabel.appendChild(document.createElement("span"));
+
+  const birthvalue = birth.value;
+  const birthlength = birthvalue.length;
+  
+  if (birthlength == 0) {
+    blspan.innerHTML=" Le champ est obligatoire !";
+    event.preventDefault();
+  } else {
+    blspan.classList.add("correct");
+    blspan.innerHTML=" Le champ est correct !";
+  }
+
+  //Quantity verification
+  qlspan = quantitylabel.appendChild(document.createElement("span"));
+
+  const quantityvalue = quantity.value;
+  const quantitylength = quantityvalue.length;
+  
+  if (quantitylength == 0) {
+    qlspan.innerHTML=" Le champ est obligatoire !";
+    event.preventDefault();
+  } else {
+    qlspan.classList.add("correct");
+    qlspan.innerHTML=" Le champ est correct !";
   }
 
 });
