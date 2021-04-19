@@ -622,13 +622,13 @@ footer {
   }
 }
 
-#firstlabel span {
+#firstlabel span, #lastlabel span {
   font-size: .8rem;
   color: red;
   font-weight: 600;
 }
 
-#firstlabel .correct {
+#firstlabel .correct, #lastlabel .correct {
   font-size: .8rem;
   color: green;
   font-weight: 600;
