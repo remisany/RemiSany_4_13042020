@@ -15,6 +15,8 @@ const formData = document.querySelectorAll(".formData");
 const validation = document.querySelector("#validation");
 const question = document.querySelector("#question");
 
+const inputs = document.getElementsByTagName("input");
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -36,6 +38,7 @@ cross.addEventListener("click", function(){
 function validate() {
   validation.style.display = "block";
   question.style.display = "none";
+  clear();
 }
 
 //Close Validation
@@ -45,6 +48,16 @@ btnclose .addEventListener("click", function(){
   modalbg.style.display = "none";
 });
 
+//Clear
+function clear() {
+  reset();
+  if (inputs.length != 0) {
+    for (i=0; i<inputs.length; i++) {
+      inputs[i].value = "";
+      inputs[i].checked = false;
+    }
+  }
+}
 
 //Form
 const form = document.querySelector("#submit");
@@ -121,7 +134,6 @@ function reset () {
   if (document.querySelector("#checkbox1label #clspan") != undefined) {
     checkbox1label.removeChild(clspan);
   }
-
 };
 
 form.addEventListener("click", function(event){
