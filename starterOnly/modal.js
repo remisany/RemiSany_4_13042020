@@ -12,12 +12,17 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
+const validation = document.querySelector("#validation");
+const question = document.querySelector("#question");
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  validation.style.display = "none";
+  question.style.display = "block";
 }
 
 //Close modal form
@@ -27,8 +32,22 @@ cross.addEventListener("click", function(){
   modalbg.style.display = "none";
 });
 
+//Validation
+function validate() {
+  validation.style.display = "block";
+  question.style.display = "none";
+}
+
+//Close Validation
+const btnclose = document.querySelector(".btn-close");
+
+btnclose .addEventListener("click", function(){
+  modalbg.style.display = "none";
+});
+
+
 //Form
-const form = document.querySelector(".btn-submit");
+const form = document.querySelector("#submit");
 var flag = 0;
 var beforesubmit = 0;
 
@@ -256,14 +275,10 @@ form.addEventListener("click", function(event){
     beforesubmit++;
   }
 
+  event.preventDefault();
+
   //Submit
-  if (beforesubmit != 7) {
-    event.preventDefault();
-    console.log(beforesubmit);
+  if (beforesubmit == 7) {
+    validate();
   }
-
 });
-
-function validate() {
-  alert("Votre participation a bien été envoyé");
-};
