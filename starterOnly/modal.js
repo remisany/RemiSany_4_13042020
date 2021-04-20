@@ -52,7 +52,7 @@ btnclose .addEventListener("click", function(){
 function clear() {
   reset();
   if (inputs.length != 0) {
-    for (i=0; i<inputs.length; i++) {
+    for (i=0; i<inputs.length-1; i++) {
       inputs[i].value = "";
       inputs[i].checked = false;
     }

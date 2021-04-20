@@ -642,6 +642,7 @@ footer {
 }
 
 #validation div {
-  margin-bottom: 400px;
+  margin-top: 200px;
+  margin-bottom: 250px;
+  text-align: center;
 }
-
