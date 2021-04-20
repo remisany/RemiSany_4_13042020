@@ -384,6 +384,10 @@ input[data-error]::after {
   border: 0;
 }
 
+.btn-submit {
+  margin-top: 15px;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -622,15 +626,18 @@ footer {
   }
 }
 
-#firstlabel span, #lastlabel span, #emaillabel span, #birthlabel span, #quantitylabel span, #radioslabel span, #checkbox1label span {
+.formData div {
   font-size: .8rem;
+  margin-top: 5px;
   color: red;
   font-weight: 600;
 }
 
-#firstlabel .correct, #lastlabel .correct, #emaillabel .correct, #birthlabel .correct, #quantitylabel .correct, #radioslabel .correct, #checkbox1label .correct{
-  font-size: .8rem;
-  color: green;
-  font-weight: 600;
+.incorrect {
+  border: 2px solid red;
+}
+
+.correct {
+  border: 2px solid green;
 }
 
