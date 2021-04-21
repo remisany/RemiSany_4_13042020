@@ -15,8 +15,8 @@
 - La modale se ferme lorsque l'utilisateur clique sur la croix.
 - Le bouton de soumission du formulaire capture les données lorsque les données sont correctement saisies.
 
-##### Formulaires :
-- Le formulaire doit être valide quand l'utilisateur clique sur "Submit"
+##### Formulaire :
+- Le formulaire doit être valide quand l'utilisateur clique sur "Submit".
 - Les données doivent être saisies correctement :
     - Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
     - Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
