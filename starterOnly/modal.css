@@ -633,6 +633,7 @@ footer {
   font-weight: 600;
 }
 
+/*RS*/
 .incorrect {
   border: 2px solid red;
 }
@@ -646,3 +647,4 @@ footer {
   margin-bottom: 250px;
   text-align: center;
 }
+/*RS*/

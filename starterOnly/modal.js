@@ -92,7 +92,6 @@ form.addEventListener("click", function(event){
   for (i=0; i<2; i++) {
 
     div = document.createElement("div");
-    //div.setAttribute("class", "div");
     div = formData[i].appendChild(div);
 
     const namevalue = inputs[i].value;
@@ -159,6 +158,7 @@ form.addEventListener("click", function(event){
   
   if (birthlength == 0) {
     div.innerHTML=" Le champ est obligatoire !";
+    inputs[3].classList.add("incorrect");
   } else {
     inputs[3].classList.add("correct");
     beforesubmit++;
@@ -173,6 +173,7 @@ form.addEventListener("click", function(event){
   
   if (quantitylength == 0) {
     div.innerHTML=" Le champ est obligatoire !";
+    inputs[4].classList.add("incorrect");
   } else {
     inputs[4].classList.add("correct");
     beforesubmit++;
